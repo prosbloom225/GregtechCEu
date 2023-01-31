@@ -1,4 +1,6 @@
 
+// TODO - infinity armor
+// TODO - singularities that include gtce mats
 
 // --- Removes ---
 

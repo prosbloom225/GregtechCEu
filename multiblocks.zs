@@ -11,6 +11,11 @@ import mods.gregtech.recipe.FactoryRecipeMap;
 import mods.gregtech.recipe.RecipeMap;
 
 
+// TODO - impl fertilizer - no chanced input, need to up the output and time taken to compensate
+// TODO - cool multiblock shapes for custom multiblocks
+// TODO - nuclear reactors?
+
+
 // --- Tree Farm ---
 
 val tree_farm = Builder.start("tree_farm") // automatic allocation ID

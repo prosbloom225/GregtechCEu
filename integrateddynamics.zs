@@ -105,8 +105,6 @@ recipes.remove(<integrateddynamics:logic_programmer>);
 recipes.addShapeless(<integrateddynamics:logic_programmer>, 
 	[<integrateddynamics:crystalized_menril_block>, <ore:circuitMv>]);
 
-// Block of Crystallized Menril
-recipes.remove(<integrateddynamics:crystalized_menril_block>);
 
 // Menril Glass
 recipes.remove(<integratedterminals:menril_glass>);
@@ -118,21 +116,64 @@ alloy_smelter.recipeBuilder()
 // Wrench
 recipes.remove(<integrateddynamics:wrench>);
 recipes.addShaped(<integrateddynamics:wrench>, 
-	[[<integrateddynamics:crystalized_menril_chunk>, <ore:gregToolHardHammer>, <integrateddynamics:crystalized_menril_chunk>],
+	[[<integrateddynamics:crystalized_menril_chunk>, <ore:craftingToolHardHammer>, <integrateddynamics:crystalized_menril_chunk>],
 	[<integrateddynamics:crystalized_menril_chunk>, <integrateddynamics:crystalized_menril_chunk>, <integrateddynamics:crystalized_menril_chunk>],
 	[null, <integrateddynamics:crystalized_menril_chunk>, null]]);
 
 // Variable Card
 recipes.removeByRecipeName("integrateddynamics:variable");
 recipes.addShaped(<integrateddynamics:variable>, 
-	[[<integratedterminals:menril_glass>, <ore:plateGlowstone>, <integratedterminals:menril_glass>],
-	[<ore:plateGlowstone>, <integrateddynamics:crystalized_menril_chunk>, <ore:plateGlowstone>],
-	[<ore:plateAluminium>, <ore:plateAluminium>, <ore:plateAluminium>]]);
+	[[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>],
+	[<integrateddynamics:crystalized_menril_chunk>, <ore:plateGlowstone>, <integrateddynamics:crystalized_menril_chunk>],
+	[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>]]);
+recipes.addShaped(<integrateddynamics:variable> *2, 
+	[[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>],
+	[<integrateddynamics:crystalized_menril_chunk>, <ore:plateAluminium>, <integrateddynamics:crystalized_menril_chunk>],
+	[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>]]);
+recipes.addShaped(<integrateddynamics:variable> *8, 
+	[[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>],
+	[<integrateddynamics:crystalized_menril_chunk>, <ore:plateStainlessSteel>, <integrateddynamics:crystalized_menril_chunk>],
+	[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>]]);
+recipes.addShaped(<integrateddynamics:variable> *16, 
+	[[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>],
+	[<integrateddynamics:crystalized_menril_chunk>, <ore:plateTitanium>, <integrateddynamics:crystalized_menril_chunk>],
+	[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>]]);
+recipes.addShaped(<integrateddynamics:variable> *64, 
+	[[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>],
+	[<integrateddynamics:crystalized_menril_chunk>, <ore:plateTungstenSteel>, <integrateddynamics:crystalized_menril_chunk>],
+	[<ore:screwSteel>, <integrateddynamics:crystalized_menril_chunk>, <ore:screwSteel>]]);
+assembler.recipeBuilder()
+	.inputs([<ore:plateGlowstone>, <integrateddynamics:crystalized_menril_chunk> *4])
+	.outputs(<integrateddynamics:variable>)
+	.duration(20).EUt(16).buildAndRegister();
+assembler.recipeBuilder()
+	.inputs([<ore:plateAluminium>, <integrateddynamics:crystalized_menril_chunk> *4])
+	.outputs(<integrateddynamics:variable> *2)
+	.duration(20).EUt(16).buildAndRegister();
+assembler.recipeBuilder()
+	.inputs([<ore:plateStainlessSteel>, <integrateddynamics:crystalized_menril_chunk> *4])
+	.outputs(<integrateddynamics:variable> *8)
+	.duration(20).EUt(16).buildAndRegister();
+assembler.recipeBuilder()
+	.inputs([<ore:plateTitanium>, <integrateddynamics:crystalized_menril_chunk> *4])
+	.outputs(<integrateddynamics:variable> *16)
+	.duration(20).EUt(16).buildAndRegister();
+assembler.recipeBuilder()
+	.inputs([<ore:plateTungstenSteel>, <integrateddynamics:crystalized_menril_chunk> *4])
+	.outputs(<integrateddynamics:variable> *64)
+	.duration(20).EUt(16).buildAndRegister();
+
+// Block of Crystallized Menril
+recipes.remove(<integrateddynamics:crystalized_menril_block>);
+compressor.recipeBuilder()
+	.inputs([<integrateddynamics:crystalized_menril_chunk> *9])
+	.outputs(<integrateddynamics:crystalized_menril_block>)
+	.duration(200).EUt(16).buildAndRegister();
 
 // Labeller
 recipes.remove(<integrateddynamics:labeller>);
 recipes.addShaped(<integrateddynamics:labeller>, 
-	[[null, <integrateddynamics:crystalized_menril_chunk>,  <ore:gregToolHardHammer>],
+	[[null, <integrateddynamics:crystalized_menril_chunk>,  <ore:craftingToolHardHammer>],
 	[null, <integrateddynamics:crystalized_menril_chunk>, <integrateddynamics:crystalized_menril_chunk>],
 	[<integrateddynamics:crystalized_menril_chunk>, null, null]]);
 
@@ -182,35 +223,37 @@ recipes.addShaped(<integratedterminals:part_terminal_crafting_job_item>,
 recipes.remove(<integratedtunnels:part_interface_item_item>);
 recipes.addShaped(<integratedtunnels:part_interface_item_item>, 
 	[[<ore:plateSteel>, <integrateddynamics:cable>, <ore:plateSteel>], 
-	[<integrateddynamics:variable_transformer>, machineCasingLv, <integrateddynamics:variable_transformer:1>], 
+	[<ore:pipeNormalItemBrass>, <ore:circuitLv>, <ore:pipeNormalItemBrass>], 
 	[<ore:plateSteel>, <integrateddynamics:cable>, <ore:plateSteel>]]);
 
 // Item Importer
 recipes.remove(<integratedtunnels:part_importer_item_item>);
 recipes.addShaped(<integratedtunnels:part_importer_item_item>, 
-	[[<ore:gregToolScrewdriver>, <ore:plateAluminium>, <ore:gregToolWrench>], 
+	[[<ore:craftingToolScrewdriver>, <ore:plateAluminium>, <ore:craftingToolWrench>], 
 	[<ore:screwAluminium>, <integrateddynamics:variable_transformer:1>, <ore:screwAluminium>], 
-	[<ore:plateAluminium>, pistonLv, <ore:plateAluminium>]]);
+	[<ore:plateAluminium>, motorLv, <ore:plateAluminium>]]);
 assembler.recipeBuilder()
-	.inputs([<ore:plateAluminium> *3, pistonLv, <integrateddynamics:variable_transformer:1>])
+	.inputs([<ore:plateAluminium> *3, motorLv, <integrateddynamics:cable>])
+	.notConsumable(<metaitem:circuit.integrated>.withTag({Configuration: 2}))
 	.outputs(<integratedtunnels:part_importer_item_item>)
-	.duration(2000).EUt(64).buildAndRegister();
+	.duration(300).EUt(64).buildAndRegister();
 	
 // Item Exporter
 recipes.remove(<integratedtunnels:part_exporter_item_item>);
 recipes.addShaped(<integratedtunnels:part_exporter_item_item>, 
-	[[<ore:gregToolScrewdriver>, <ore:plateAluminium>, <ore:gregToolWrench>], 
+	[[<ore:craftingToolScrewdriver>, <ore:plateAluminium>, <ore:craftingToolWrench>], 
 	[<ore:screwAluminium>, <integrateddynamics:variable_transformer>, <ore:screwAluminium>], 
-	[<ore:plateAluminium>, pistonLv, <ore:plateAluminium>]]);
+	[<ore:plateAluminium>, motorLv, <ore:plateAluminium>]]);
 assembler.recipeBuilder()
-	.inputs([<ore:plateAluminium> *3, pistonLv, <integrateddynamics:variable_transformer>])
+	.notConsumable(<metaitem:circuit.integrated>.withTag({Configuration: 1}))
+	.inputs([<ore:plateAluminium> *3, motorLv, <integrateddynamics:cable>])
 	.outputs(<integratedtunnels:part_exporter_item_item>)
-	.duration(2000).EUt(64).buildAndRegister();
+	.duration(300).EUt(64).buildAndRegister();
 
 // World Item Exporter
 recipes.remove(<integratedtunnels:part_exporter_world_item_item>);
 recipes.addShaped(<integratedtunnels:part_exporter_world_item_item>, 
-	[[<ore:gregToolScrewdriver>, <minecraft:hopper>, <ore:gregToolHardHammer>], 
+	[[<ore:craftingToolScrewdriver>, <minecraft:hopper>, <ore:craftingToolHardHammer>], 
 	[<ore:screwAluminium>, <integratedtunnels:part_importer_item_item>, <ore:screwAluminium>], 
 	[<ore:plateAluminium>, <ore:plateAluminium>, <ore:plateAluminium>]]);
 assembler.recipeBuilder()
@@ -221,7 +264,7 @@ assembler.recipeBuilder()
 // World Item Importer
 recipes.remove(<integratedtunnels:part_importer_world_item_item>);
 recipes.addShaped(<integratedtunnels:part_importer_world_item_item>, 
-	[[<ore:gregToolScrewdriver>, <minecraft:diamond_pickaxe>, <ore:gregToolHardHammer>], 
+	[[<ore:craftingToolScrewdriver>, <minecraft:diamond_pickaxe>, <ore:craftingToolHardHammer>], 
 	[<ore:screwAluminium>, <integratedtunnels:part_importer_item_item>, <ore:screwAluminium>], 
 	[<ore:plateAluminium>, <ore:plateAluminium>, <ore:plateAluminium>]]);
 assembler.recipeBuilder()
@@ -233,7 +276,7 @@ assembler.recipeBuilder()
 recipes.remove(<integratedtunnels:part_interface_fluid_item>);
 recipes.addShaped(<integratedtunnels:part_interface_fluid_item>, 
 	[[<ore:plateLapis>, <integrateddynamics:cable>, <ore:plateLapis>], 
-	[<integrateddynamics:variable_transformer>, machineCasingMv, <integrateddynamics:variable_transformer:1>], 
+	[<ore:pipeNormalFluidAluminium>, <ore:circuitLv>, <ore:pipeNormalFluidAluminium>], 
 	[<ore:plateLapis>, <integrateddynamics:cable>, <ore:plateLapis>]]);
 
 // Fluid Importer
@@ -282,7 +325,7 @@ assembler.recipeBuilder()
 recipes.remove(<integratedtunnels:part_player_simulator_item>);
 recipes.addShaped(<integratedtunnels:part_player_simulator_item>,
 	[[<ore:plateAluminium>, <integratedtunnels:part_exporter_world_block_item>, <ore:plateAluminium>],
-	[<ore:gregToolWrench>, coinDoge, <ore:gregToolHardHammer>],
+	[<ore:craftingToolWrench>, coinDoge, <ore:craftingToolHardHammer>],
 	[<ore:plateAluminium>, <integratedtunnels:part_importer_world_block_item>, <ore:plateAluminium>]]);
 
 
