@@ -16,7 +16,7 @@ recipes.remove(<storagedrawers:controller>);
 recipes.addShaped(<storagedrawers:controller>, 
 	[[<ore:plateStainlessSteel>, <ore:circuitMv>, <ore:plateStainlessSteel>],
 	[<minecraft:repeater>, <ore:drawerBasic>, <minecraft:repeater>],
-	[<ore:plateEnderEye>, <ore:plateDiamond>, <ore:plateEnderEye>]]);
+	[<ore:plateStainlessSteel>, <ore:plateDiamond>, <ore:plateStainlessSteel>]]);
 
 // Controller Slave
 recipes.remove(<storagedrawers:controllerslave>);

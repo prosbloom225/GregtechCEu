@@ -14,6 +14,71 @@ mods.jei.JEI.removeAndHide(<thaumcraft:amulet_vis>);
 
 // --- Recipes ---
 
+// Creative Thaumonomicon
+recipes.remove(<thaumcraft:thaumonomicon:1>);
+recipes.addShaped(<thaumcraft:thaumonomicon:1>, 
+    [[<thaumcraft:salis_mundus>, <thaumcraft:salis_mundus>, <thaumcraft:salis_mundus>],
+    [<ore:plateStainlessSteel>, <ore:craftingBook>, <ore:plateStainlessSteel>],
+    [<thaumcraft:salis_mundus>, <thaumcraft:salis_mundus>, <thaumcraft:salis_mundus>]]);
+
+// Aer Crystals
+autoclave.recipeBuilder()
+    .inputs([<ore:gemAerInfused>, <ore:sand>])
+    .fluidInputs(<liquid:water> * 100)
+	.outputs(<thaumcraft:crystal_essence>.withTag({Aspects: [{amount: 1, key: "aer"}]}))
+    .duration(200)
+    .EUt(16)
+    .buildAndRegister();
+
+// Aqua Crystals
+autoclave.recipeBuilder()
+    .inputs([<ore:gemAquaInfused>, <ore:sand>])
+    .fluidInputs(<liquid:water> * 100)
+	.outputs(<thaumcraft:crystal_essence>.withTag({Aspects: [{amount: 1, key: "aqua"}]}))
+    .duration(200)
+    .EUt(16)
+    .buildAndRegister();
+
+// Entropy Crystals
+autoclave.recipeBuilder()
+    .inputs([<ore:gemEntropyInfused>, <ore:sand>])
+    .fluidInputs(<liquid:water> * 100)
+	.outputs(<thaumcraft:crystal_essence>.withTag({Aspects: [{amount: 1, key: "perditio"}]}))
+    .duration(200)
+    .EUt(16)
+    .buildAndRegister();
+
+// Ignis Crystals
+autoclave.recipeBuilder()
+    .inputs([<ore:gemIgnisInfused>, <ore:sand>])
+    .fluidInputs(<liquid:water> * 100)
+	.outputs(<thaumcraft:crystal_essence>.withTag({Aspects: [{amount: 1, key: "ignis"}]}))
+    .duration(200)
+    .EUt(16)
+    .buildAndRegister();
+    
+// Ordo Crystals
+autoclave.recipeBuilder()
+    .inputs([<ore:gemOrdoInfused>, <ore:sand>])
+    .fluidInputs(<liquid:water> * 100)
+	.outputs(<thaumcraft:crystal_essence>.withTag({Aspects: [{amount: 1, key: "ordo"}]}))
+    .duration(200)
+    .EUt(16)
+    .buildAndRegister();
+
+// Terra Crystals
+autoclave.recipeBuilder()
+    .inputs([<ore:gemTerraInfused>, <ore:sand>])
+    .fluidInputs(<liquid:water> * 100)
+	.outputs(<thaumcraft:crystal_essence>.withTag({Aspects: [{amount: 1, key: "terra"}]}))
+    .duration(200)
+    .EUt(16)
+    .buildAndRegister();
+
+// Quicksilver
+furnace.remove(<gregtech:machine:125>);
+furnace.addRecipe(<thaumcraft:quicksilver>, <ore:gemCinnabar>);
+
 // Arcane Stone Bricks
 recipes.remove(<thaumcraft:stone_arcane_brick>);
 laser_engraver.recipeBuilder()
@@ -58,14 +123,14 @@ recipes.remove(<thaumcraft:table_wood>);
 recipes.addShaped(<thaumcraft:table_wood>, 
 	[[<ore:slabWood>, <ore:slabWood>, <ore:slabWood>],
 	[<ore:stickWood>, <ore:screwIron>, <ore:stickWood>],
-	[<ore:slabWood>, <ore:gregToolScrewdriver>, <ore:slabWood>]]);
+	[<ore:slabWood>, <ore:craftingToolScrewdriver>, <ore:slabWood>]]);
 	
 // Stone Table
 recipes.remove(<thaumcraft:table_stone>);
 recipes.addShaped(<thaumcraft:table_wood>, 
 	[[<ore:slabStone>, <ore:slabStone>, <ore:slabStone>],
 	[<ore:stickWood>, <ore:screwIron>, <ore:stickWood>],
-	[<ore:slabStone>, <ore:gregToolScrewdriver>, <ore:slabStone>]]);
+	[<ore:slabStone>, <ore:craftingToolScrewdriver>, <ore:slabStone>]]);
 
 // Metal Blocks
 recipes.remove(<thaumcraft:metal_brass>);
@@ -214,7 +279,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("hungry_chest", "HUNGRYCHES
 	<thaumcraft:hungry_chest>, 
 	[[<ore:screwSteel>, <thaumicaugmentation:arcane_trapdoor_metal>, <ore:screwSteel>], 
 	[<thaumcraft:brain>, <ore:chest>, <thaumcraft:brain>], 
-	[<ore:screwSteel>, <ore:gregToolScrewdriver>, <ore:screwSteel>]]);	
+	[<ore:screwSteel>, <ore:craftingToolScrewdriver>, <ore:screwSteel>]]);	
 	
 // Essentia Tube
 mods.thaumcraft.ArcaneWorkbench.removeRecipe(<thaumcraft:tube>);
@@ -257,7 +322,7 @@ mods.thaumcraft.ArcaneWorkbench.removeRecipe(<thaumcraft:tube_filter>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("tube_filter", "TUBES",  10, 
 	[<aspect:ordo> *16, <aspect:aqua> *16], 
 	<thaumcraft:tube_filter>, 
-	[[<ore:gregToolScrewdriver>, <thaumcraft:filter>, <ore:gregToolFile>], 
+	[[<ore:craftingToolScrewdriver>, <thaumcraft:filter>, <ore:craftingToolFile>], 
 	[<ore:screwSteel>, <thaumcraft:tube>, <ore:screwSteel>], 
 	[null, <thaumcraft:filter>, null]]);	
 	
@@ -532,9 +597,9 @@ mods.thaumcraft.Infusion.removeRecipe(<thaumcraft:resonator>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("resonator", "TUBES",  30, 
 	[<aspect:aer> *8, <aspect:aqua> *8], 
 	<thaumcraft:resonator>, 
-	[[<ore:gregToolScrewdriver>, <ore:stickAluminium>, null], 
+	[[<ore:craftingToolScrewdriver>, <ore:stickAluminium>, null], 
 	[<ore:stickAluminium>, <ore:nuggetQuicksilver>, <ore:stickAluminium>], 
-	[<ore:stickWood>, <ore:screwAluminium>, <ore:gregToolFile>]]);	
+	[<ore:stickWood>, <ore:screwAluminium>, <ore:craftingToolFile>]]);	
 	
 // Sanity Checker
 mods.thaumcraft.Infusion.removeRecipe(<thaumcraft:sanity_checker>);
@@ -555,21 +620,21 @@ mods.thaumcraft.Infusion.registerRecipe("hand_mirror", "", <thaumcraft:hand_mirr
 // Thaumium Axe
 recipes.remove(<thaumcraft:thaumium_axe>);
 recipes.addShaped(<thaumcraft:thaumium_axe>, 
-	[[<ore:plateThaumium>, <ore:ingotThaumium>, <ore:gregToolHardHammer>],
+	[[<ore:plateThaumium>, <ore:ingotThaumium>, <ore:craftingToolHardHammer>],
 	[<ore:plateThaumium>, <ore:stickWood>],
-	[<ore:gregToolFile>, <ore:stickWood>]]);
+	[<ore:craftingToolFile>, <ore:stickWood>]]);
 	
 // Thaumium Sword
 recipes.remove(<thaumcraft:thaumium_sword>);
 recipes.addShaped(<thaumcraft:thaumium_sword>, 
 	[[null, <ore:plateThaumium>, null],
-	[<ore:gregToolFile>, <ore:plateThaumium>, <ore:gregToolHardHammer>],
+	[<ore:craftingToolFile>, <ore:plateThaumium>, <ore:craftingToolHardHammer>],
 	[null, <ore:stickWood>, null]]);
 	
 // Thaumium Shovel
 recipes.remove(<thaumcraft:thaumium_shovel>);
 recipes.addShaped(<thaumcraft:thaumium_shovel>, 
-	[[<ore:gregToolFile>, <ore:plateThaumium>, <ore:gregToolHardHammer>],
+	[[<ore:craftingToolFile>, <ore:plateThaumium>, <ore:craftingToolHardHammer>],
 	[null, <ore:stickWood>, null],
 	[null, <ore:stickWood>, null]]);
 	
@@ -577,14 +642,14 @@ recipes.addShaped(<thaumcraft:thaumium_shovel>,
 recipes.remove(<thaumcraft:thaumium_pick>);
 recipes.addShaped(<thaumcraft:thaumium_shovel>, 
 	[[<ore:plateThaumium>, <ore:ingotThaumium>, <ore:ingotThaumium>],
-	[<ore:gregToolFile>, <ore:stickWood>, <ore:gregToolHardHammer>],
+	[<ore:craftingToolFile>, <ore:stickWood>, <ore:craftingToolHardHammer>],
 	[null, <ore:stickWood>, null]]);
 	
 // Thaumium Shovel
 recipes.remove(<thaumcraft:thaumium_hoe>);
 recipes.addShaped(<thaumcraft:thaumium_hoe>, 
-	[[<ore:plateThaumium>, <ore:ingotThaumium>, <ore:gregToolHardHammer>],
-	[<ore:gregToolFile>, <ore:stickWood>, null],
+	[[<ore:plateThaumium>, <ore:ingotThaumium>, <ore:craftingToolHardHammer>],
+	[<ore:craftingToolFile>, <ore:stickWood>, null],
 	[null, <ore:stickWood>, null]]);
 	
 // Void Axe
@@ -592,9 +657,9 @@ recipes.remove(<thaumcraft:void_axe>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_axe", "",  50, 
 	[<aspect:perditio> *30, <aspect:terra> *15], 
 	<thaumcraft:void_axe>, 
-	[[<ore:plateVoid>, <ore:ingotVoid>, <ore:gregToolHardHammer>], 
+	[[<ore:plateVoid>, <ore:ingotVoid>, <ore:craftingToolHardHammer>], 
 	[<ore:plateVoid>, <ore:stickWood>, null], 
-	[<ore:gregToolFile>, <ore:stickWood>, null]]);	
+	[<ore:craftingToolFile>, <ore:stickWood>, null]]);	
 	
 // Void Sword
 recipes.remove(<thaumcraft:void_sword>);
@@ -602,7 +667,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_sword", "",  50,
 	[<aspect:perditio> *30, <aspect:terra> *15], 
 	<thaumcraft:void_sword>, 
 	[[null, <ore:plateVoid>, null], 
-	[<ore:gregToolFile>, <ore:plateVoid>, <ore:gregToolHardHammer>], 
+	[<ore:craftingToolFile>, <ore:plateVoid>, <ore:craftingToolHardHammer>], 
 	[null, <ore:stickWood>, null]]);
 
 // Void Shovel
@@ -610,7 +675,7 @@ recipes.remove(<thaumcraft:void_shovel>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_shovel", "",  50, 
 	[<aspect:perditio> *30, <aspect:terra> *15], 
 	<thaumcraft:void_shovel>, 
-	[[<ore:gregToolFile>, <ore:ingotVoid>, <ore:gregToolHardHammer>], 
+	[[<ore:craftingToolFile>, <ore:ingotVoid>, <ore:craftingToolHardHammer>], 
 	[null, <ore:stickWood>, null], 
 	[null, <ore:stickWood>, null]]);
 	
@@ -620,7 +685,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_pick", "",  50,
 	[<aspect:perditio> *30, <aspect:terra> *15], 
 	<thaumcraft:void_pick>, 
 	[[<ore:plateVoid>, <ore:ingotVoid>, <ore:ingotVoid>], 
-	[<ore:gregToolFile>, <ore:stickWood>, <ore:gregToolHardHammer>], 
+	[<ore:craftingToolFile>, <ore:stickWood>, <ore:craftingToolHardHammer>], 
 	[null, <ore:stickWood>, null]]);
 	
 // Void Hoe
@@ -628,8 +693,8 @@ recipes.remove(<thaumcraft:void_hoe>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_hoe", "",  50, 
 	[<aspect:perditio> *30, <aspect:terra> *15], 
 	<thaumcraft:void_hoe>, 
-	[[<ore:plateVoid>, <ore:ingotVoid>, <ore:gregToolHardHammer>], 
-	[<ore:gregToolFile>, <ore:stickWood>, null], 
+	[[<ore:plateVoid>, <ore:ingotVoid>, <ore:craftingToolHardHammer>], 
+	[<ore:craftingToolFile>, <ore:stickWood>, null], 
 	[null, <ore:stickWood>, null]]);
 	
 // Axe of the Stream
@@ -679,7 +744,7 @@ mods.thaumcraft.ArcaneWorkbench.removeRecipe(<thaumcraft:grapple_gun>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_sword", "GRAPPLEGUN",  150, 
 	[<aspect:aer> *10, <aspect:ignis> *10], 
 	<thaumcraft:grapple_gun>, 
-	[[<ore:gregToolScrewdriver>, <ore:screwIron>, <thaumcraft:grapple_gun_spool>], 
+	[[<ore:craftingToolScrewdriver>, <ore:screwIron>, <thaumcraft:grapple_gun_spool>], 
 	[<thaumcraft:grapple_gun_tip>, motorLv, <ore:plateIron>], 
 	[null, <ore:plateBrass>, <ore:plankWood>]]);
 	
@@ -689,7 +754,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("grapple_gun_tip", "GRAPPLE
 	[<aspect:aer> *7, <aspect:ignis> *5], 
 	<thaumcraft:grapple_gun_tip>, 
 	[[<ore:plateBrass>, <thaumcraft:nugget:10>, <ore:plateBrass>], 
-	[<ore:gregToolHardHammer>, <minecraft:arrow>, <ore:gregToolFile>], 
+	[<ore:craftingToolHardHammer>, <minecraft:arrow>, <ore:craftingToolFile>], 
 	[<ore:plateBrass>, <thaumcraft:nugget:10>, <ore:plateBrass>]]);
 
 // Grapple Gun Spool
@@ -707,20 +772,20 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("goggles", "BASEARTIFICE", 
 	[<aspect:aer> *10, <aspect:terra> *10, <aspect:ignis> *10, <aspect:aqua> *10, <aspect:ordo> *10, <aspect:perditio> *10], 
 	<thaumcraft:goggles>, 
 	[[<thaumcraft:fabric>, <ore:screwGold>, <thaumcraft:fabric>], 
-	[<ore:ringGold>, <ore:gregToolScrewdriver>, <ore:ringGold>], 
+	[<ore:ringGold>, <ore:craftingToolScrewdriver>, <ore:ringGold>], 
 	[<thaumcraft:thaumometer>, <ore:stickGold>, <thaumcraft:thaumometer>]]);
 		
 // Thaumium Helm
 recipes.remove(<thaumcraft:thaumium_helm>);
 recipes.addShaped(<thaumcraft:thaumium_helm>, 
 	[[<ore:plateThaumium>, <ore:plateThaumium>, <ore:plateThaumium>],
-	[<ore:plateThaumium>, <ore:gregToolHardHammer>, <ore:plateThaumium>],
+	[<ore:plateThaumium>, <ore:craftingToolHardHammer>, <ore:plateThaumium>],
 	[null, null, null]]);
 	
 // Thaumium Chest
 recipes.remove(<thaumcraft:thaumium_chest>);
 recipes.addShaped(<thaumcraft:thaumium_chest>, 
-	[[<ore:plateThaumium>, <ore:gregToolHardHammer>, <ore:plateThaumium>],
+	[[<ore:plateThaumium>, <ore:craftingToolHardHammer>, <ore:plateThaumium>],
 	[<ore:plateThaumium>, <ore:plateThaumium>, <ore:plateThaumium>],
 	[<ore:plateThaumium>, <ore:plateThaumium>, <ore:plateThaumium>]]);
 	
@@ -728,14 +793,14 @@ recipes.addShaped(<thaumcraft:thaumium_chest>,
 recipes.remove(<thaumcraft:thaumium_legs>);
 recipes.addShaped(<thaumcraft:thaumium_legs>, 
 	[[<ore:plateThaumium>, <ore:plateThaumium>, <ore:plateThaumium>],
-	[<ore:plateThaumium>, <ore:gregToolHardHammer>, <ore:plateThaumium>],
+	[<ore:plateThaumium>, <ore:craftingToolHardHammer>, <ore:plateThaumium>],
 	[<ore:plateThaumium>, null, <ore:plateThaumium>]]);
 	
 // Thaumium Boots
 recipes.remove(<thaumcraft:thaumium_boots>);
 recipes.addShaped(<thaumcraft:thaumium_boots>, 
 	[[<ore:plateThaumium>, null, <ore:plateThaumium>],
-	[<ore:plateThaumium>, <ore:gregToolHardHammer>, <ore:plateThaumium>],
+	[<ore:plateThaumium>, <ore:craftingToolHardHammer>, <ore:plateThaumium>],
 	[null, null, null]]);
 	
 // Thaumaturges Robe
@@ -802,7 +867,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_helm", "BASEELDRITCH"
 	[<aspect:perditio> *40, <aspect:terra> *20], 
 	<thaumcraft:void_helm>, 
 	[[<ore:plateVoid>, <ore:plateVoid>, <ore:plateVoid>], 
-	[<ore:plateVoid>, <ore:gregToolHardHammer>, <ore:plateVoid>], 
+	[<ore:plateVoid>, <ore:craftingToolHardHammer>, <ore:plateVoid>], 
 	[null, null, null]]);	 
 
 // Void Chest
@@ -810,7 +875,7 @@ recipes.remove(<thaumcraft:void_chest>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_chest", "BASEELDRITCH",  150, 
 	[<aspect:perditio> *40, <aspect:terra> *20], 
 	<thaumcraft:void_chest>, 
-	[[<ore:plateVoid>, <ore:gregToolHardHammer>, <ore:plateVoid>], 
+	[[<ore:plateVoid>, <ore:craftingToolHardHammer>, <ore:plateVoid>], 
 	[<ore:plateVoid>, <ore:plateVoid>, <ore:plateVoid>], 
 	[<ore:plateVoid>, <ore:plateVoid>, <ore:plateVoid>]]);	 
 	
@@ -820,7 +885,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_legs", "BASEELDRITCH"
 	[<aspect:perditio> *40, <aspect:terra> *20], 
 	<thaumcraft:void_legs>, 
 	[[<ore:plateVoid>, <ore:plateVoid>, <ore:plateVoid>], 
-	[<ore:plateVoid>, <ore:gregToolHardHammer>, <ore:plateVoid>], 
+	[<ore:plateVoid>, <ore:craftingToolHardHammer>, <ore:plateVoid>], 
 	[<ore:plateVoid>, null, <ore:plateVoid>]]);	
 	
 // Void Boots
@@ -830,7 +895,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("void_boots", "BASEELDRITCH
 	<thaumcraft:void_boots>, 
 	[[null, null, null], 
 	[<ore:plateVoid>, null, <ore:plateVoid>], 
-	[<ore:plateVoid>, <ore:gregToolHardHammer>, <ore:plateVoid>]]);	
+	[<ore:plateVoid>, <ore:craftingToolHardHammer>, <ore:plateVoid>]]);	
 
 // Void Thaumaturges Helm
 mods.thaumcraft.Infusion.removeRecipe(<thaumcraft:void_robe_helm>);
@@ -862,7 +927,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("mundane_amulet", "BASEARTI
 	[<aspect:ignis> *10, <aspect:ordo> *10, <aspect:terra> *5], 
 	<thaumcraft:baubles>, 
 	[[<ore:wireFineGold>, <ore:wireFineGold>, <ore:wireFineGold>], 
-	[<ore:wireFineGold>, <ore:gregToolScrewdriver>, <ore:wireFineGold>], 
+	[<ore:wireFineGold>, <ore:craftingToolScrewdriver>, <ore:wireFineGold>], 
 	[<ore:screwGold>, <ore:oreCrystalEarth>, <ore:screwGold>]]);	
 	
 // Mundane Ring
@@ -871,7 +936,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("mundane_ring", "BASEARTIFI
 	[<aspect:ignis> *10, <aspect:ordo> *10, <aspect:terra> *5], 
 	<thaumcraft:baubles:1>, 
 	[[<ore:screwGold>, <ore:stickGold>, <ore:screwGold>], 
-	[<ore:stickGold>, <ore:gregToolScrewdriver>, <ore:stickGold>], 
+	[<ore:stickGold>, <ore:craftingToolScrewdriver>, <ore:stickGold>], 
 	[<ore:screwGold>, <ore:stickGold>, <ore:screwGold>]]);	
 	
 // Mundane Belt
@@ -880,7 +945,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("mundane_belt", "BASEARTIFI
 	[<aspect:ignis> *10, <aspect:ordo> *10, <aspect:terra> *5], 
 	<thaumcraft:baubles:2>, 
 	[[<ore:screwGold>, <ore:gemNetherStar>, <ore:screwGold>], 
-	[<minecraft:leather>, <ore:gregToolScrewdriver>, <minecraft:leather>], 
+	[<minecraft:leather>, <ore:craftingToolScrewdriver>, <minecraft:leather>], 
 	[<ore:screwGold>, <ore:ringBrass>, <ore:screwGold>]]);	
 
 // Fancy Amulet
@@ -889,7 +954,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("fancy_amulet", "BASEARTIFI
 	[<aspect:ignis> *10, <aspect:ordo> *10, <aspect:terra> *5], 
 	<thaumcraft:baubles:4>, 
 	[[<ore:wireFineRoseGold>, <ore:wireFineRoseGold>, <ore:wireFineRoseGold>], 
-	[<ore:wireFineRoseGold>, <ore:gregToolScrewdriver>, <ore:wireFineRoseGold>], 
+	[<ore:wireFineRoseGold>, <ore:craftingToolScrewdriver>, <ore:wireFineRoseGold>], 
 	[<ore:screwRoseGold>, <ore:oreCrystalAir>, <ore:screwRoseGold>]]);
 	
 // Fancy Ring
@@ -898,7 +963,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("fancy_ring", "BASEARTIFICE
 	[<aspect:ignis> *10, <aspect:ordo> *10, <aspect:terra> *5], 
 	<thaumcraft:baubles:5>, 
 	[[<ore:screwRoseGold>, <ore:stickRoseGold>, <ore:screwRoseGold>], 
-	[<ore:stickRoseGold>, <ore:gregToolScrewdriver>, <ore:stickRoseGold>], 
+	[<ore:stickRoseGold>, <ore:craftingToolScrewdriver>, <ore:stickRoseGold>], 
 	[<ore:screwRoseGold>, <ore:stickRoseGold>, <ore:screwRoseGold>]]);	
 	
 // Fancy Belt
@@ -907,7 +972,7 @@ mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("fancy_belt", "BASEARTIFICE
 	[<aspect:ignis> *10, <aspect:ordo> *10, <aspect:terra> *5], 
 	<thaumcraft:baubles:6>, 
 	[[<ore:screwRoseGold>, <ore:gemNetherStar>, <ore:screwRoseGold>], 
-	[<minecraft:leather>, <ore:gregToolScrewdriver>, <minecraft:leather>], 
+	[<minecraft:leather>, <ore:craftingToolScrewdriver>, <minecraft:leather>], 
 	[<ore:screwRoseGold>, <ore:ringTitanium>, <ore:screwRoseGold>]]);	
 	
 // Amulet of Vis
@@ -976,9 +1041,9 @@ recipes.remove(<thaumcraft:golem_bell>);
 mods.thaumcraft.ArcaneWorkbench.registerShapedRecipe("golemancers_ball", "BASEGOLEMANCY",  10, 
 	[<aspect:terra> *20, <aspect:ordo> *20, <aspect:perditio> *20], 
 	<thaumcraft:golem_bell>, 
-	[[<ore:gregToolScrewdriver>, <ore:plateNetherQuartz>, <ore:boltNetherQuartz>], 
+	[[<ore:craftingToolScrewdriver>, <ore:plateNetherQuartz>, <ore:boltNetherQuartz>], 
 	[<ore:screwIron>, <ore:plateNetherQuartz>, <ore:plateNetherQuartz>], 
-	[<ore:stickWood>,<ore:screwIron>, <ore:gregToolFile>]]);
+	[<ore:stickWood>,<ore:screwIron>, <ore:craftingToolFile>]]);
 	
 // Blank Seal
 mods.thaumcraft.ArcaneWorkbench.removeRecipe(<thaumcraft:seal>);
@@ -1001,7 +1066,7 @@ mods.thaumcraft.Infusion.removeRecipe(<thaumcraft:seal:8>);
 mods.thaumcraft.Infusion.registerRecipe("seal_butcher", "SEALBUTCHER", <thaumcraft:seal:8>, 12, 
 	[<aspect:bestia> *32, <aspect:mortuus> *32, <aspect:victus> *32, <aspect:aversio> *32], 
 	<thaumcraft:seal:7>, 
-	[<minecraft:nether_star>, <ore:gregToolBlade>, <minecraft:iron_sword>, <thaumcraft:brain>, <minecraft:bow>, <minecraft:arrow>]);
+	[<minecraft:nether_star>, <ore:craftingToolBlade>, <minecraft:iron_sword>, <thaumcraft:brain>, <minecraft:bow>, <minecraft:arrow>]);
 	
 // Control Seal - Guard
 mods.thaumcraft.Crucible.removeRecipe(<thaumcraft:seal:9>);

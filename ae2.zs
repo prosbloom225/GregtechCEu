@@ -553,7 +553,7 @@ laser_engraver.recipeBuilder()
 	.inputs([<ore:blockIron>])
 	.outputs(<appliedenergistics2:material:13>)
 	.notConsumable(<ore:craftingLensBlue>)
-	.duration(2000).EUt(1920).buildAndRegister();	
+	.duration(2000).EUt(480).buildAndRegister();	
 
 // Printed Calculation Circuit 
 forming_press.recipeBuilder()
@@ -685,7 +685,7 @@ laser_engraver.recipeBuilder()
 	.inputs([<ore:blockIron>])
 	.outputs(<appliedenergistics2:material:14>)
 	.notConsumable(<ore:craftingLensYellow>)
-	.duration(2000).EUt(1920).buildAndRegister();	
+	.duration(2000).EUt(480).buildAndRegister();	
 
 // Printed Engineering Circuit
 forming_press.recipeBuilder()
@@ -766,7 +766,7 @@ laser_engraver.recipeBuilder()
 	.inputs([<ore:blockIron>])
 	.outputs(<appliedenergistics2:material:15>)
 	.notConsumable(<ore:craftingLensLime>)
-	.duration(2000).EUt(1920).buildAndRegister();	
+	.duration(2000).EUt(480).buildAndRegister();	
 
 // Printed Logic Circuit
 forming_press.recipeBuilder()
@@ -802,7 +802,7 @@ laser_engraver.recipeBuilder()
 	.inputs([<ore:blockIron>])
 	.outputs(<appliedenergistics2:material:19>)
 	.notConsumable(<ore:craftingLensWhite>)
-	.duration(2000).EUt(1920).buildAndRegister();
+	.duration(2000).EUt(480).buildAndRegister();
 
 // Printed Silicon
 forming_press.recipeBuilder()
@@ -934,6 +934,11 @@ recipes.addShaped(<appliedenergistics2:part:360>,
 	[[<ore:craftingToolScrewdriver>, <appliedenergistics2:part:380>, <ore:craftingToolHammer>], 
 	[<ore:screwAluminium>, <ore:workbench>, <ore:screwAluminium>], 
 	[<ore:plateNetherQuartz>, processorEngineering, <ore:plateNetherQuartz>]]);
+assembler.recipeBuilder()
+	.inputs([<ore:workbench>, <appliedenergistics2:part:380>, <ore:plateNetherQuartz> *2])
+	.outputs(<appliedenergistics2:part:360>)
+	.notConsumable(<metaitem:circuit.integrated>.withTag({Configuration: 4}))
+	.duration(100).EUt(4).buildAndRegister();	
 
 // Dark Illumination Panel
 recipes.remove(<appliedenergistics2:part:200>);
@@ -1083,9 +1088,14 @@ wiremill.recipeBuilder()
 // Illuminated Panel
 recipes.remove(<appliedenergistics2:part:180>);
 recipes.addShaped(<appliedenergistics2:part:180>, 
-	[[<ore:craftingToolScrewdriver>, <ore:plateStainlessSteel>, <ore:craftingToolHammer>], 
+	[[<ore:craftingToolScrewdriver>, <ore:plateTitanium>, <ore:craftingToolHammer>], 
 	[<ore:screwAluminium>, display, <ore:screwAluminium>], 
 	[<ore:plateGlowstone>, <ore:plateRedAlloy>, <ore:plateGlowstone>]]);
+assembler.recipeBuilder()
+	.inputs([<ore:screwAluminium> *2, display, <ore:plateTitanium>, <ore:plateRedAlloy>, <ore:plateGlowstone> *2])
+	.outputs(<appliedenergistics2:part:180>)
+	.notConsumable(<metaitem:circuit.integrated>.withTag({Configuration: 4}))
+	.duration(100).EUt(120).buildAndRegister();	
 assembler.recipeBuilder()
 	.inputs([<ore:itemIlluminatedPanel>])
 	.outputs(<appliedenergistics2:part:180>)
@@ -1098,6 +1108,11 @@ recipes.addShaped(<appliedenergistics2:part:220>,
 	[[<ore:craftingToolScrewdriver>, <ore:chestWood>, <ore:craftingToolHammer>], 
 	[<ore:screwAluminium>, <appliedenergistics2:part:440>, <ore:screwAluminium>], 
 	[<ore:plateNetherQuartz>, pistonLv, <ore:plateNetherQuartz>]]);
+assembler.recipeBuilder()
+	.inputs([<appliedenergistics2:part:440>, <ore:chestWood>, <ore:plateNetherQuartz> *2, pistonLv])
+	.outputs(<appliedenergistics2:part:220>)
+	.notConsumable(<metaitem:circuit.integrated>.withTag({Configuration: 4}))
+	.duration(100).EUt(4).buildAndRegister();	
 
 // ME Storage Monitor
 recipes.remove(<appliedenergistics2:part:400>);
@@ -1112,6 +1127,11 @@ recipes.addShaped(<appliedenergistics2:part:380>,
 	[[<ore:plateNetherQuartz>, <ore:screwStainlessSteel>, <ore:plateNetherQuartz>], 
 	[<ore:itemIlluminatedPanel>, <ore:circuitMv>, <ore:plateCertusQuartz>], 
 	[<ore:plateNetherQuartz>, <ore:craftingToolScrewdriver>, <ore:plateNetherQuartz>]]);
+assembler.recipeBuilder()
+	.inputs([<ore:plateNetherQuartz> *4, <ore:circuitMv>, <ore:itemIlluminatedPanel>])
+	.outputs(<appliedenergistics2:part:380>)
+	.notConsumable(<metaitem:circuit.integrated>.withTag({Configuration: 4}))
+	.duration(100).EUt(4).buildAndRegister();
 
 // ME Toggle Bus
 recipes.remove(<appliedenergistics2:part:80>);

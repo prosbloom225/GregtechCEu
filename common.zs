@@ -64,6 +64,7 @@ global shapePipeNormal as IItemStack = <gregtech:meta_item_1:40>;
 
 
 global crateSteel as IItemStack = <gregtech:machine:1627>;
+global quantumTank as IItemStack = <gregtech:machine:1585>;
 global crateTungstenSteel as IItemStack = <gregtech:machine:1631>;
 global quantumEye as IItemStack = <gregtech:meta_item_1:281>;
 global cleanRoomGlass as IItemStack = <gregtech:transparent_casing:3>;

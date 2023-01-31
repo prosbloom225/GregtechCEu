@@ -22,25 +22,42 @@ val tree_farm = Builder.start("tree_farm") // automatic allocation ID
     .withPattern(function(controller as IControllerTile) as IBlockPattern {
             val casing = CTPredicate.states(<blockstate:gregtech:machine_casing>).setMinGlobalLimited(9).addTooltips("tree_farm.casing.tooltips");
             return FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.DOWN, RelativeDirection.FRONT)
-            .aisle( "KKK",
-                    "KKK",
-                    "KSK")
-            .aisle( "CCC",
-                    "C C",
-                    "CCC")
-            .aisle( "CCC",
-                    "CCC",
-                    "CCC")
-            .where("K", casing | controller.autoAbilities())
-            .where("C", casing)
+            .aisle( "CCCCC",
+                    "CGGGC",
+                    "CGGGC",
+                    "CGGGC",
+                    "CCSCC")
+            .aisle( "CCCCC",
+                    "G   G",
+                    "G   G",
+                    "G   G",
+                    "CDDDC")
+            .aisle( "CCCCC",
+                    "G   G",
+                    "G   G",
+                    "G   G",
+                    "CDDDC")
+            .aisle( "CCCCC",
+                    "G   G",
+                    "G   G",
+                    "G   G",
+                    "CDDDC")
+            .aisle( "CCCCC",
+                    "CGGGC",
+                    "CGGGC",
+                    "CGGGC",
+                    "CCCCC")
+            .where("C", casing | controller.autoAbilities())
+            .where("D", casing)
+            .where("G", <metastate:gregtech:transparent_casing:3>)
             .where("S", controller.self())
-            .where(" ", CTPredicate.getAny())
+            .where(" ", CTPredicate.getAir())
             .build();
             } as IPatternBuilderFunction)
     .withRecipeMap(
         FactoryRecipeMap.start("tree_farm")
         .minInputs(1)
-        .maxInputs(1)
+        .maxInputs(3)
         .minOutputs(1)
         .maxOutputs(3)
         .minFluidInputs(0)
@@ -50,66 +67,65 @@ val tree_farm = Builder.start("tree_farm") // automatic allocation ID
     .buildAndRegister();
 
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<minecraft:sapling>)
-    .outputs(<minecraft:log>)
-    .duration(200)
+    .notConsumable(<minecraft:sapling>)
+    .outputs(<minecraft:log> * 64)
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<minecraft:sapling:1>)
-    .outputs(<minecraft:log:1>)
-    .duration(200)
+    .notConsumable(<minecraft:sapling:1>)
+    .outputs(<minecraft:log:1> *64)
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<minecraft:sapling:2>)
-    .outputs(<minecraft:log:2>)
-    .duration(200)
+    .notConsumable(<minecraft:sapling:2>)
+    .outputs(<minecraft:log:2> *64)
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<minecraft:sapling:3>)
-    .outputs(<minecraft:log:3>)
-    .duration(200)
+    .notConsumable(<minecraft:sapling:3>)
+    .outputs(<minecraft:log:3> *64)
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<minecraft:sapling:4>)
-    .outputs(<minecraft:log:4>)
-    .duration(200)
+    .notConsumable(<minecraft:sapling:4>)
+    .outputs(<minecraft:log:4> *64)
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<minecraft:sapling:5>)
-    .outputs(<minecraft:log:5>)
-    .duration(200)
+    .notConsumable(<minecraft:sapling:5>)
+    .outputs(<minecraft:log:5> *64)
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<gregtech:rubber_sapling>)
-    .outputs([<gregtech:rubber_log>, <gregtech:meta_item_1:438>])
-    .duration(200)
+    .notConsumable(<gregtech:rubber_sapling>)
+    .outputs([<gregtech:rubber_log> *64, <gregtech:meta_item_1:438> *8])
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
-    .inputs(<integrateddynamics:menril_sapling>)
-    .outputs([<integrateddynamics:menril_log>, <integrateddynamics:crystalized_menril_chunk>])
-    .duration(200)
+    .notConsumable(<integrateddynamics:menril_sapling>)
+    .outputs([<integrateddynamics:menril_log> *64, <integrateddynamics:crystalized_menril_chunk> *8])
+    .duration(1000)
     .EUt(120)
     .buildAndRegister();
-
 tree_farm.recipeMap.recipeBuilder()
 	.notConsumable(<thaumcraft:sapling_greatwood>)
-    .outputs([<thaumcraft:log_greatwood>])
+    .outputs([<thaumcraft:log_greatwood> *64])
     .chancedOutput(<thaumcraft:sapling_greatwood>, 500, 500)
-    .duration(600)
+    .duration(2000)
     .EUt(120)
     .buildAndRegister();
 tree_farm.recipeMap.recipeBuilder()
 	.notConsumable(<thaumcraft:sapling_silverwood>)
-    .outputs([<thaumcraft:log_silverwood>])
+    .outputs([<thaumcraft:log_silverwood> *64])
     .chancedOutput(<thaumcraft:sapling_silverwood>, 500, 500)
-    .duration(600)
+    .duration(2000)
     .EUt(120)
     .buildAndRegister();
 
