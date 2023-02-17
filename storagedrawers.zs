@@ -98,6 +98,10 @@ recipes.addShaped(<storagedrawers:drawer_key>,
 	[[null, <ore:boltGold>, <ore:plateSteel>],
 	[<storagedrawers:upgrade_template>, <ore:plateSteel>, <ore:stickGold>],
 	[<ore:plateGold>, <ore:craftingToolSaw>, null]]);
+assembler.recipeBuilder()
+	.inputs([<storagedrawers:upgrade_template>, <ore:plateSteel> *2, <ore:stickGold>, <ore:plateGold>, <ore:boltGold>])
+	.outputs(<storagedrawers:drawer_key>)
+	.duration(200).EUt(30).buildAndRegister();
 	
 // Concealment Key
 recipes.remove(<storagedrawers:shroud_key>);

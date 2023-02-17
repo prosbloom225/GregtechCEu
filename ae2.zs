@@ -32,7 +32,7 @@ val hullHv = <gregtech:machine:988>;
 val pistonLv = <gregtech:meta_item_1:172>;
 val pistonHv = <gregtech:meta_item_1:174>;
 val laserEngraverHv = <gregtech:machine:52>;
-val assemblerHv = <gregtech:machine:112>;
+val assemblerEv = <gregtech:machine:113>;
 val chargerHv = <gregtech:machine:1378>;
 val crateSteel = <gregtech:machine:1627>;
 
@@ -175,9 +175,9 @@ recipes.addShaped(<appliedenergistics2:spatial_io_port>,
 // ME Controller
 recipes.remove(<appliedenergistics2:controller>);
 recipes.addShaped(<appliedenergistics2:controller>, 
-	[[<ore:plateStainlessSteel>, <ore:circuitHv>, <ore:plateStainlessSteel>], 
+	[[<ore:plateTitanium>, <ore:circuitHv>, <ore:plateTitanium>], 
 	[processorEngineering, <appliedenergistics2:fluix_block>, processorEngineering], 
-	[<ore:plateStainlessSteel>, <ore:circuitHv>, <ore:plateStainlessSteel>]]);
+	[<ore:plateTitanium>, <ore:circuitHv>, <ore:plateTitanium>]]);
 
 // ME Drive
 recipes.remove(<appliedenergistics2:drive>);
@@ -196,9 +196,9 @@ recipes.addShaped(<appliedenergistics2:chest>,
 // ME Interface
 recipes.remove(<appliedenergistics2:interface>);
 recipes.addShaped(<appliedenergistics2:interface>, 
-	[[<ore:plateStainlessSteel>, meCable, <ore:plateStainlessSteel>], 
+	[[<ore:plateTitanium>, meCable, <ore:plateTitanium>], 
 	[coreAnnihilation, casingHv, coreFormation], 
-	[<ore:plateStainlessSteel>, meCable, <ore:plateStainlessSteel>]]);
+	[<ore:plateTitanium>, meCable, <ore:plateTitanium>]]);
 recipes.addShapeless(<appliedenergistics2:interface>, [<appliedenergistics2:part:440>]);
 recipes.addShapeless(<appliedenergistics2:part:440>, [<appliedenergistics2:interface>]);
 
@@ -321,7 +321,7 @@ assembler.recipeBuilder()
 recipes.remove(<appliedenergistics2:molecular_assembler>);
 recipes.addShaped(<appliedenergistics2:molecular_assembler>, 
 	[[<ore:plateStainlessSteel>, <ore:blockGlass>, <ore:plateStainlessSteel>], 
-	[coreAnnihilation, assemblerHv, coreFormation], 
+	[coreAnnihilation, assemblerEv, coreFormation], 
 	[<ore:plateStainlessSteel>, <ore:blockGlass>, <ore:plateStainlessSteel>]]);
 
 // Light Detecting Fixture
@@ -330,6 +330,13 @@ assembler.recipeBuilder()
 	.inputs([certusQuartz, <ore:stickAluminium>])
 	.outputs(<appliedenergistics2:light_detector>)
 	.duration(200).EUt(30).buildAndRegister();	
+
+// Cable Anchor
+recipes.remove(<appliedenergistics2:part:120>);
+cutter.recipeBuilder()
+	.inputs([<ore:boltSilver>])
+	.outputs(<appliedenergistics2:part:120>)
+	.duration(100).EUt(16).buildAndRegister();	
 
 
 // Certus Quartz Cutting Knife
@@ -903,21 +910,16 @@ assembler.recipeBuilder()
 // ME Dense Smart Cable
 recipes.remove(<appliedenergistics2:part:76>);
 assembler.recipeBuilder()
-	.inputs([<appliedenergistics2:part:516>, <ore:plateGlowstone>])
-	.outputs(<appliedenergistics2:part:76>)
+	.inputs([<appliedenergistics2:part:516> *4, <ore:circuitHv>])
+	.outputs(<appliedenergistics2:part:76> *4)
 	.fluidInputs([<liquid:redstone> *144])
 	.duration(200).EUt(120).buildAndRegister();	
 
 // ME Smart Cable
 recipes.remove(<appliedenergistics2:part:56>);
 assembler.recipeBuilder()
-	.inputs([<appliedenergistics2:part:36>, <ore:plateLapis>])
-	.outputs(<appliedenergistics2:part:56>)
-	.fluidInputs([<liquid:redstone> *144])
-	.duration(150).EUt(120).buildAndRegister();	
-assembler.recipeBuilder()
-	.inputs([<appliedenergistics2:part:76> *4, <ore:plateLapis>])
-	.outputs(<appliedenergistics2:part:56>)
+	.inputs([<appliedenergistics2:part:36> *4, <ore:circuitMv>])
+	.outputs(<appliedenergistics2:part:56> *4)
 	.fluidInputs([<liquid:redstone> *144])
 	.duration(150).EUt(120).buildAndRegister();	
 
@@ -1066,6 +1068,11 @@ recipes.addShaped(<appliedenergistics2:part:460>,
 	[[<ore:craftingToolScrewdriver>, <ore:plateStainlessSteel>, <ore:craftingToolHammer>], 
 	[<ore:screwAluminium>, processorEngineering, <ore:screwAluminium>], 
 	[<ore:crystalFluix>, <ore:crystalFluix>, <ore:crystalFluix>]]);
+assembler.recipeBuilder()
+	.inputs([<ore:crystalFluix> *3, processorEngineering, <ore:plateStainlessSteel>])
+	.outputs(<appliedenergistics2:part:460>)
+	.notConsumable(<metaitem:circuit.integrated>.withTag({Configuration: 4}))
+	.duration(200).EUt(30).buildAndRegister();	
 
 // ME Pattern Terminal
 recipes.remove(<appliedenergistics2:part:340>);

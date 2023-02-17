@@ -89,6 +89,7 @@ global lapotronCrystal as IItemStack = <gregtech:meta_item_1:742>;
 global gravitationEngine as IItemStack = <gregtech:meta_item_1:778>;
 
 global dustEnergium as IItemStack = <gregtech:meta_item_1:491>;
+global dustNetherrack as IItemStack = <gregtech:meta_dust:1604>;
 global drumSteel as IItemStack = <gregtech:machine:1612>;
 
 global machineCasingUlv as IItemStack = <gregtech:machine_casing>;

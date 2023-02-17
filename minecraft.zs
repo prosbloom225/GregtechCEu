@@ -590,3 +590,4 @@ mixer.recipeBuilder()
 	.notConsumable(quantumEye)
 	.outputs(<minecraft:end_stone>)
 	.duration(200).EUt(120).buildAndRegister();
+
